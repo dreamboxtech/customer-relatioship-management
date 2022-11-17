@@ -1,0 +1,8 @@
+asgiref==3.2.10
+certifi==2022.5.18.1
+Django==3.1.4
+Pillow @ file:///C:/Users/TOSHIBA/Downloads/Pillow-9.1.1-cp39-cp39-win32.whl
+pytz==2022.6
+sqlparse==0.4.3
+typing==3.7.4.3
+wincertstore==0.2
