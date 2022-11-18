@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM</title>
-</head>
-<body>
-    <a href="/hello/create">Create Lead</a>
+{% extends 'base.html' %}
+
+{% block content %} 
+    <a href="{% url 'leader:create' %}">Create Lead</a>
     <hr>
     <h1>Basic page</h1>
     {% for lead in leads %}
         <ul>
             <li>
-            <a href="/hello/{{ lead.pk }}" >{{lead}} </a>
+            <a href="{% url 'leader:details' lead.pk %}" >{{lead}} </a>
             </li>
         </ul>
     {% endfor %}
-</body>
-</html>
+{% endblock content %} 

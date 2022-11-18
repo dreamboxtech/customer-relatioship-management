@@ -7,7 +7,7 @@ from .forms import LeadModelForm
 
 
 
-def hello(request):
+def lead(request):
     leads =  Lead.objects.all()
     
     context = {
@@ -28,7 +28,7 @@ def create(request):
         form = LeadModelForm(request.POST)
         if  form.is_valid():            
             form.save()
-            return redirect('/hello')
+            return redirect('/leads')
         
     context = {
         'form': form
@@ -48,6 +48,11 @@ def update(request, pk):
         'form': form
     }
     return render(request, 'update.html', context)
+
+def lead_delete(request, pk):
+    lead = Lead.objects.get(id=pk)
+    lead.delete()
+    return redirect('/leads')
 
 
 
