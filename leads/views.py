@@ -7,6 +7,10 @@ from .forms import LeadModelForm
 
 
 
+def land(request):
+    return render(request, 'landing.html')
+
+
 def lead(request):
     leads =  Lead.objects.all()
     
