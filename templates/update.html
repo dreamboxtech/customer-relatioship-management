@@ -7,9 +7,9 @@
     <title>Create a Lead</title>
 </head>
 <body>
-    <a href="/hello">back</a>
+    <a href="/hello/{{ lead.pk }}">back</a>
         <hr>
-    <h1>Create New Lead</h1>
+    <h1>Update lead: {{ lead.firstname }} {{ lead.last_name }}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p}}

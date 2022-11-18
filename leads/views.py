@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
 from .models import Lead
+from .forms import LeadModelForm
 
 
 
@@ -22,4 +23,31 @@ def details(request, pk):
     return render(request, 'details.html', context)
 
 def create(request):
-    return render(request, "create.html")
+    form = LeadModelForm()
+    if request.method == 'POST':
+        form = LeadModelForm(request.POST)
+        if  form.is_valid():            
+            form.save()
+            return redirect('/hello')
+        
+    context = {
+        'form': form
+    }
+    return render(request, "create.html", context)
+
+def update(request, pk):
+    lead = Lead.objects.get(id=pk)
+    form = LeadModelForm(instance=lead)
+    if request.method == "POST":
+        form = LeadModelForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            return redirect("/hello")
+    context = {
+        'lead': lead,
+        'form': form
+    }
+    return render(request, 'update.html', context)
+
+
+
