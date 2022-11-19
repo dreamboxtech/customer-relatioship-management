@@ -20,7 +20,7 @@ from leads.views import land
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', land),
+    path('', land, name='landing_page'),
     path('leads/', include('leads.urls', namespace="leader"))
 ]
 
