@@ -5,8 +5,15 @@ from django.views.generic import (
     )
 from django.http import HttpResponse
 from .models import Lead
-from .forms import LeadModelForm
+from .forms import LeadModelForm, CustomUserCreationForm
 
+
+class SignupView(CreateView):
+    template_name = "registration/signup.html"
+    form_class = CustomUserCreationForm
+
+    def get_success_url(self) -> str:
+        return reverse("leader:home")
 
 class LandingPageView(TemplateView):
     template_name = "landing.html"
